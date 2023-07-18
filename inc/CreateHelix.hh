@@ -1,4 +1,3 @@
-
 #ifndef CreateHelix_h
 #define CreateHelix_h 1
 
@@ -6,9 +5,9 @@
 #include <vector>
 #include "TVector3.h"
 
+// My additional file to create the G4TessellatedSolid
 #include "G4TessellatedSolid.hh"
 #include "G4TriangularFacet.hh"
-// My additional file to create the G4TessellatedSolid
 
 //!
 #include "G4VUserDetectorConstruction.hh"
@@ -32,12 +31,6 @@
 
 #include "G4VisAttributes.hh"
 #include "G4Colour.hh"
-
-#include "VirtualDetectorSD.hh"
-#include "ScintSD.hh"
-#include "SiPMSD.hh"
-
-#include "DetectorMessenger.hh"
 
 #include "G4GlobalMagFieldMessenger.hh"
 
@@ -103,9 +96,5 @@ namespace HelixMaker{
     // Create a triangulated helix using G4TessellatedSolid
     G4TessellatedSolid* CreateHelix(G4String name, TVector3 center, double size, double runningangle, double length, int steps, double extrusion); 
 }
-
-void start_print(G4String s);
-void running_print(G4String s);
-void finish_print(G4String s);
 
 #endif

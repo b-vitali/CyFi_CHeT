@@ -57,6 +57,9 @@ using namespace HelixMaker;
 #include "ScintSD.hh"
 #include "SiPMSD.hh"
 
+#include "../../SiPM/inc/G4MyPrint.hh"
+using namespace G4MyPrint;
+
 #include "G4GlobalMagFieldMessenger.hh"
 
 #include "G4Cache.hh"
