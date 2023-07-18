@@ -59,6 +59,7 @@ using namespace HelixMaker;
 
 #include "../../SiPM/inc/G4MyPrint.hh"
 using namespace G4MyPrint;
+#include "CreateSiPM.hh"
 
 #include "G4GlobalMagFieldMessenger.hh"
 
