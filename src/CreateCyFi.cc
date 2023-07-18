@@ -731,9 +731,6 @@ void CreateCyFi::Volumes()
 	G4PVPlacement* SecondCladdingPlacement_out = new G4PVPlacement(0, G4ThreeVector(), SecondCladdingLogical_out, "sCladding_out", FiberLogical_out, false, 0, hCheckOverlaps);			
 	G4PVPlacement* CorePlacement_out = new G4PVPlacement(0, G4ThreeVector(), CoreLogical_out, "CoreLogical_out", FiberLogical_out, false, 0, hCheckOverlaps);			
 
-	CreateSiPM * SiPM = new CreateSiPM("pop", 2*cm, 2*cm, 2*cm, 0.5);
-	SiPM->Create(hLogicWorld);
-
 	//? Surfaces
 	// Core Surface
 	G4OpticalSurface* OpCoreSurface_out = new G4OpticalSurface("CoreSurface_out");
