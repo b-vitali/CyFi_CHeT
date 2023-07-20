@@ -74,7 +74,7 @@ class CreateCyFi
 {
     public:
 		//? Constructor
-		CreateCyFi(double length, double radius, double thickness, double angle_in, double angle_out);
+		CreateCyFi(double length, double radius, double thickness, double angle_in, double angle_out, bool CheckOverlaps);
 		CreateCyFi();
         virtual ~CreateCyFi();
 

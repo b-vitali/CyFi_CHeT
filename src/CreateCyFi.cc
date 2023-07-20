@@ -3,7 +3,7 @@
 
 #include "CreateCyFi.hh"
 
-CreateCyFi::CreateCyFi(double length, double radius, double thickness, double angle_in, double angle_out)
+CreateCyFi::CreateCyFi(double length, double radius, double thickness, double angle_in, double angle_out, bool CheckOverlaps)
 {	
 	// Define geometry at creation
 	hCyFi_length 	= length;
@@ -11,6 +11,8 @@ CreateCyFi::CreateCyFi(double length, double radius, double thickness, double an
 	hFiberThickness	= thickness;
 	hangle_in 		= angle_in;
 	hangle_out 		= angle_out;
+	hCheckOverlaps 	= CheckOverlaps;
+;
 
 }
 
@@ -501,7 +503,6 @@ void CreateCyFi::Volumes()
 	start_print("CreateCyFi::Volumes");
 
 	bool bool_CyFiOpticalGrease = true; 
-	hCheckOverlaps = true;
 
 	//? Read Solid and Phys.
 	hReadSizeX = hFiberThickness;
@@ -660,7 +661,7 @@ void CreateCyFi::Volumes()
 	hPhysRead_in 	= new G4PVPlacement(Read_transform_in, hLogicRead_in, "Read", FiberLogical_in, true, 1, hCheckOverlaps);
 
 
-	int n_in = (r_in-hFiberThickness/2) * 2*M_PI / (hFiberThickness/cos(hangle_in));
+	int n_in = (r_in-hFiberThickness/2) * 2*M_PI / (hFiberThickness/cos(hangle_in)+1*um);
 	n_in = n_in-1;
 	G4cout<<"Fiber's arc : "<<r_in * 2*M_PI / hFiberThickness<<"; N of fibers : "<<n_in<<G4endl;
 	double theta_in = 2*M_PI/n_in;
@@ -775,7 +776,7 @@ void CreateCyFi::Volumes()
 	Read_transform_out = ((G4Translate3D)Read_adjust_out)*(G4Translate3D)G4ThreeVector(0, 0, hCyFi_length)*Read_rotate_out*(G4Translate3D)Read_translate_out*Read_adapt_out*flip_sipm;
 	hPhysRead_out 	= new G4PVPlacement(Read_transform_out, hLogicRead_out, "Read", FiberLogical_out, true, 1, hCheckOverlaps);
 
-	int n_out = (r_out-hFiberThickness/2) * 2*M_PI / (hFiberThickness/cos(hangle_out));
+	int n_out = (r_out-hFiberThickness/2) * 2*M_PI / (hFiberThickness/cos(hangle_out)+1*um);
 	n_out = n_out-1;
 	G4cout<<"Fiber's arc : "<<r_out * 2*M_PI / hFiberThickness<<"; N of fibers : "<<n_out<<G4endl;
 	double theta_out = 2*M_PI/n_out;
